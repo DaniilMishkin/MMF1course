@@ -1,74 +1,93 @@
 //
-//  main.cpp
-//  31.10.2018
+//  Library.cpp
+//  7.11.18
 //
-//  Created by Даниил Мишкин on 27/10/2018.
+//  Created by Даниил Мишкин on 04/11/2018.
 //  Copyright © 2018 Даниил Мишкин. All rights reserved.
 //
 
+#include <stdio.h>
 #include <iostream>
 #include "math.h"
 
-using namespace std;
+long long GetBinNumber (int number) {
+    int i = 1;
+    long long binNumber = 0;
+    while (number != 0 ) {
+        binNumber = binNumber + ((number % 2) * pow(10,i));
+        number = number / 2;
+        i++;
+    }
+    return binNumber  / 10;
+}
 
-long long  FibonacchiNumber (int number) {
-    if (number == 0) {
-        return 0;
-    }
-    if (number == 1){
-        return 1;
-        
-    } else {
-        return FibonacchiNumber(number-1)+FibonacchiNumber(number-2);
-    }
+
+void  GetAmountOfDigits (long long number, int &sumOfZeroes, int &sumOfOnes) {
     
-}
-
-
-int GetCountsOfDigits(long number) {
-    int count = (number == 0) ? 1 : 0;
+    sumOfZeroes = 0;
+    sumOfOnes = 0;
     while (number != 0) {
-        count++;
+        if (number % 10 == 1) {
+            sumOfOnes++;
+        } else {
+            sumOfZeroes++;
+        }
         number /= 10;
     }
-    return count;
 }
 
-void GetCountOfEveryDigit (long long number) {
-    int digits[10] = {0,0,0,0,0,0,0,0,0,0};
+int GetSumOfSymbols (int number, char symbol){
+    int sumSymbol = 0;
     while (number != 0) {
-        digits[number % 10]++;
-        number /= 10;
-    }
-    for (int i=0; i<=9; i++) {
-        cout << "Amount of '" << i << "' in this number = " << digits[i] << endl;
-    }
-}
-
-void MaxMinDigitInicialization (long long number) {
-    int max,min = number % 10;
-    while (number != 0) {
-        if (max < number % 10) {
-            max = number%10;
+        
+        if (number % 16 > 9) {
+            switch (number % 16) {
+                case 10:
+                    if (symbol == 'a' || symbol == 'A') {
+                        sumSymbol++;
+                    }
+                    break;
+                    
+                case 11:
+                    if (symbol == 'b' || symbol == 'B') {
+                        sumSymbol++;
+                    }
+                    break;
+                    
+                case 12:
+                    if (symbol == 'c' || symbol == 'C') {
+                        sumSymbol++;
+                    }
+                    break;
+                    
+                case 13:
+                    if (symbol == 'd' || symbol == 'D') {
+                        sumSymbol++;
+                    }
+                    break;
+                    
+                case 14:
+                    if (symbol == 'e' || symbol == 'E') {
+                        sumSymbol++;
+                    }
+                    break;
+                    
+                case 15:
+                    if (symbol == 'f' || symbol == 'F') {
+                        sumSymbol++;
+                    }
+                    break;
+                    ;
+            }
+        } else {
+            if (symbol == (number % 16)) {
+                sumSymbol++;
+            };
         }
-        if (min > number % 10) {
-            min = number%10;
-        }
-        number /=10;
+        number/=16;
     }
-    cout << "MIN digit is " << min << " and MAX digit is " << max <<endl;
-}
-
-bool IsItPrimeNumber(long long number){
-    bool result = true;
-    for (long long i = 2; i <= sqrt(number); i++)
-    {
-        if (!(number % i))
-        {
-            result = false;
-            break;
-        }
-    }
-    return result;
+   
+    return sumSymbol;
+    
 }
 
