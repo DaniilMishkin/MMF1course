@@ -26,6 +26,6 @@ int main(int argc, const char * argv[]) {
     
     sort(makeUnique(array, n), n, 3, 2);
     
-    //I NEED A LITTLE MORE TIME
+    //I'M SO SORRY. I NEED A LITTLE MORE TIME
     return 0;
 }
