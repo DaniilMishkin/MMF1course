@@ -58,8 +58,6 @@ void DisplayFile(char* fileName)
 void SystemFun()
 {
     cout << endl;
-    system("pause");
-    system("cls");
 }
 
 void InitNameFile(char* fileName)
@@ -67,7 +65,6 @@ void InitNameFile(char* fileName)
     cout << "Enter the name of file: " << endl;
     cin.ignore();
     cin.getline(fileName, 256, '\n');
-    system("cls");
 }
 
 Student* readFromFile(char* fileName) {
@@ -78,7 +75,6 @@ Student* readFromFile(char* fileName) {
     if (!streamIn.is_open()) {
         
         cout << "Cannot open file to read!" << endl;
-        system("pause");
         exit(1);
     }
     
