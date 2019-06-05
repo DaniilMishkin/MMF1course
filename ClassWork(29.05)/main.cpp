@@ -61,7 +61,6 @@ void DisplayFile(char* fileName, int size)
     if (!streamIn.is_open())
     {
         cout << "Can't open file to read.";
-        system("pause");
         exit(1);
     }
     int bufSize = sizeof(int) * size * size, counter = 0;
@@ -80,8 +79,6 @@ void DisplayFile(char* fileName, int size)
 void SystemFun()
 {
     cout << endl;
-    system("pause");
-    system("cls");
 }
 
 
@@ -90,7 +87,6 @@ void InitNameFile(char* fileName) {
     cout << "Enter the name of file: " << endl;
     cin.ignore();
     cin.getline(fileName, 256, '\n');
-    system("cls");
 }
 
 
